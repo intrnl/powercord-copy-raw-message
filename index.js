@@ -13,8 +13,8 @@ class CopyRawMessage extends Plugin {
     uninject('powercord-copy-raw-message_cm')
   }
 
-  _patchContextMenu () {
-    const FluxMessageDevModeCMG = getModuleByDisplayName('FluxContainer(MessageDeveloperModeGroup)', false)
+  async _patchContextMenu () {
+    const FluxMessageDevModeCMG = await getModuleByDisplayName('FluxContainer(MessageDeveloperModeGroup)')
     const MessageDevModeCMG = (new FluxMessageDevModeCMG).render().type
 
     inject('powercord-copy-raw-message_cm', MessageDevModeCMG.prototype, 'render', function (_, res) {
